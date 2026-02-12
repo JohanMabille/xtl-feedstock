@@ -1,0 +1,49 @@
+context:
+  version: "0.8.2"
+  build_number: 0
+
+package:
+  name: xtl
+  version: ${{ version }}
+
+source:
+  url: https://github.com/xtensor-stack/xtl/archive/${{ version }}.tar.gz
+  sha256: 8fb38d6a5856aab5740d2ccb3d791d289f648d4cc506b94a1338fe5fce100c11
+
+build:
+  number: ${{ build_number }}
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib('c') }}
+    - cmake
+    - if: unix
+      then:
+        - make
+
+tests:
+  - package_contents:
+      files:
+        exists:
+          - ${{ "Library/" if win }}include/xtl/xbasic_fixed_string.hpp
+          - ${{ "Library/" if win }}share/cmake/xtl/xtlConfig.cmake
+          - ${{ "Library/" if win }}share/cmake/xtl/xtlConfigVersion.cmake
+
+about:
+  homepage: https://github.com/xtensor-stack/xtl
+  repository: https://github.com/xtensor-stack/xtl
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: The xtensor-stack tools library
+  description: Basic tools (containers, algorithms) used by other packages from the xtensor and xeus stacks.
+  documentation: https://xtl.readthedocs.io
+
+extra:
+  recipe-maintainers:
+    - SylvainCorlay
+    - JohanMabille
+    - wolfv
+    - davidbrochart
+    - conda-forge/xtensor

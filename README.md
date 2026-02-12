@@ -11,7 +11,7 @@ Summary: The xtensor-stack tools library
 
 Development: https://github.com/xtensor-stack/xtl
 
-Documentation: https://xtl.readthedocs.io
+Documentation: https://xtl.readthedocs.io/
 
 Basic tools (containers, algorithms) used by other packages from the xtensor and xeus stacks.
 
